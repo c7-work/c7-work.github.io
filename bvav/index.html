@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BV <-> AV</title>
+</head>
+
+<body>
+    <div>
+		<body style="background-image: url(https://api.iloli.love/acg.php);background-attachment: fixed;background-repeat: no-repeat;background-size: cover;-moz-background-size: cover;">
+    </div>
+    <p id="title">BV <-> AV</p>
+    <input id="bv" type="text" placeholder="BV">
+    <button onclick="AV2bv()"><-</button>
+    <button onclick="bv2av()">-></button>
+    <input id="av" type="text" placeholder="AV"><br>
+    <script>
+        function bv2av() {
+            const bv = document.getElementById('bv').value;
+            document.getElementById('av').value = dec(bv);
+        }
+
+        function AV2bv() {
+            const av = +document.getElementById('av').value;
+            document.getElementById('bv').value = enc(av);
+        }
+
+        const table = 'fZodR9XQDSUm21yCkr6zBqiveYah8bt4xsWpHnJE7jL5VG3guMTKNPAwcF'
+        const tr = {}
+        for (let i = 0; i < 58; i++)
+            tr[table[i]] = i
+        const s = [11, 10, 3, 8, 4, 6]
+        const xor = 177451812
+        const add = 8728348608
+
+        function dec(x) {
+            let r = 0
+            for (let i = 0; i < 6; i++) {
+                r += tr[x[s[i]]] * 58 ** i
+            }
+            return (r - add) ^ xor
+        }
+        function enc(x) {
+            x = (x ^ xor) + add
+            r = 'BV1  4 1 7  '.split('')
+            for (let i = 0; i < 6; i++) {
+                r[s[i]] = table[parseInt(x / 58 ** i) % 58]
+            }
+            return r.join('')
+        }
+    </script>
+</body>
+
+</html>

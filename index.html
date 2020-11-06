@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title id="title">萌新导航站</title>
+  <meta name="keywords" content="萌新导航站">
+  <meta name="description" content="萌新导航站">
+  <link rel="stylesheet icon" href="img/icon.ico"/>
+  <link rel="stylesheet" type="text/css" href="bootstrap/bootstrap.css">
+  <link rel="stylesheet" href="css/font-awesome.min.css">
+  <script type="text/javascript" src="js/jQuery.js"></script>
+  <script type="text/javascript" src="bootstrap/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="css/slideout.css">
+  <style type="text/css">
+    @font-face {
+        font-family: "lolifont";
+        src: url(https://www.iloli.love/font/loli.ttf);
+    }
+  </style>
+  <script>
+    var now = new Date().getTime();
+    document.write('<link href="css/style.css?v=' + now + '" rel="stylesheet" type="text/css"/>');
+    // 百度统计
+    var _hmt = _hmt || []; (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?269d9810e6e65c6849db7abcdf340ff3";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+</head>
+<body>
+  <nav id="menu" class="menu">
+   <blockquote class="blockquote">▎ 设置</blockquote> 
+   <ul> 
+    <a href="#"><li class="sidenav-btn" id="night">夜间模式</li></a>
+    <a href="#"><li class="sidenav-btn" id="bg">关闭/显示壁纸</li></a>
+   </ul> 
+   <blockquote class="blockquote">▎ 本站导航</blockquote> 
+   <ul> 
+    <a target="_blank" href="https://www.iloli.love"><li class="sidenav-btn">导航站<p>本站点</p></li></a> 
+    <a target="_blank" href="https://blog.iloli.love"><li class="sidenav-btn">博客站<p>萌新blog</p></li></a> 
+    <a target="_blank" href="https://audio.iloli.love"><li class="sidenav-btn">音频站<p>储存本站点所有音频资源</p></li></a> 
+    <a target="_blank" href="https://pic.iloli.love"><li class="sidenav-btn">图片站<p>储存本站点所有图片资源</p></li></a> 
+    <a target="_blank" href="https://game.iloli.love"><li class="sidenav-btn">网页小游戏站<p>小游戏</p></li></a> 
+    <a target="_blank" href="https://api.iloli.love"><li class="sidenav-btn">api站<p>图片api</p></li></a> 
+   </ul> 
+   <blockquote class="blockquote">▎ 搜索引擎</blockquote> 
+   <ul>
+    <a target="_blank" href="https://www.baidu.com"><li class="sidenav-btn">百度<p>baidu</p></li></a> 
+    <a target="_blank" href="https://www.google.com"><li class="sidenav-btn">谷歌<p>google</p></li></a>
+    <a target="_blank" href="https://cn.bing.com"><li class="sidenav-btn">必应<p>bing</p></li></a>
+    <a target="_blank" href="https://www.sogou.com/"><li class="sidenav-btn">搜狗<p>sogou</p></li></a>
+   </ul> 
+   <blockquote class="blockquote">▎ 常用网站</blockquote> 
+   <ul>
+    <a target="_blank" href="https://www.bilibili.com"><li class="sidenav-btn">哔哩哔哩<p>bilibili</p></li></a> 
+    <a target="_blank" href="https://www.github.com"><li class="sidenav-btn">Github<p>github</p></li></a>
+    <a target="_blank" href="https://www.youtube.com/"><li class="sidenav-btn">油管<p>youtube</p></li></a>
+    <a target="_blank" href="https://twitter.com"><li class="sidenav-btn">推特<p>twitter</p></li></a>
+    <a target="_blank" href="https://www.pixiv.net"><li class="sidenav-btn">P站<p>pixiv</p></li></a>
+    <a target="_blank" href="https://earth.google.com/web"><li class="sidenav-btn">谷歌地球<p>earth</p></li></a>
+   </ul> 
+   <blockquote class="blockquote">▎ 友链</blockquote> 
+   <ul>
+    <a target="_blank" href="mailto:1@iloli.love"><li class="sidenav-btn">点击添加友链<p>联系我   1@iloli.love</p></li></a> 
+    <a target="_blank" href="https://www.iloli.love"><li class="sidenav-btn">暂无<p>暂无</p></li></a> 
+   </ul> 
+  </nav>
+
+  <!-- 主页面 -->
+  <main id="main" class="panel">
+  <!-- 天气 -->
+  <div id="tp-weather-widget"></div>
+   <!-- 主容器 -->
+   <div class="container">
+
+    <!-- 侧边栏按钮 -->
+    <img class="slidebtn btn-hamburger js-slideout-toggle" src="img/menu.svg" /> 
+    <!-- 搜索盒子 --> 
+    <div class="search-box"> 
+     <!-- logo --> 
+     <div id="logo"> 
+      <div id="state"> 
+       <a href="folder://"><img id="img" src="img/baidu.png" /></a> 
+      </div> 
+     </div>
+
+     <!-- 搜索框 --> 
+     <div class="inputDiv">
+      <form id="form" action="https://www.baidu.com/s" target="_self" onsubmit="return check()"> 
+      <input id="inputText" type="text" placeholder="百度搜索..." name="wd" size="30" baidusug="1" /> 
+      <button id="submitButton" class="submitButton" type="submit"></button>
+      
+      </form>
+      <!-- 搜索提示词 -->
+      <div id="searchlist">
+        <ul id="list"></ul>
+      </div>
+    </div>
+
+    <!-- 书签、引擎选择器 --> 
+    <div id="Select" class="Select" onclick="select()">
+     <hr>本站站点(点击切换搜索引擎)
+     <img src="img/search-change.svg?v=2ae7ab8" />
+    </div> 
+    <!-- 书签 --> 
+    <div id="folder" class="folder"> 
+     <ul></ul>
+    </div> 
+
+    <!-- 导航引擎 --> 
+    <div id="nav" class="nav"> 
+     <ul></ul> 
+    </div>
+
+
+   </div> 
+</div>
+<div style="font-family: lolifont;position: fixed;bottom: 0;text-align: center;width: 200px;margin-bottom: 10px;left: 45%;"><img src="img/moeicon120.png" alt="https://icp.gov.moe" width="30" height="30"/><a href="https://icp.gov.moe" target="_blank">萌ICP备</a><a href="https://icp.gov.moe/?keyword=20205217" 0target="_blank"> 20205217号</a></div>
+  </main>
+ 
+<script type="text/javascript" src="js/slideout.min.js"></script>
+<script type="text/javascript">
+  var slideout = new Slideout({
+    'panel': document.getElementById('main'),
+    'menu': document.getElementById('menu'),
+    'padding': 290,
+    'tolerance': 70
+  });
+  document.querySelector('.js-slideout-toggle').addEventListener('click',
+  function() {
+    slideout.toggle();
+  });
+  document.querySelector('.menu').addEventListener('click',
+  function(eve) {
+    if (eve.target.nodeName === 'A') {
+      slideout.close();
+    }
+  });
+  $(document).click(function(e) {
+    var Class = $(e.target).attr("class");
+    var Id = $(e.target).attr("id");
+    if (Class == 'panel slideout-panel slideout-panel-left' || Class == 'folder-item col-xs-3 col-sm-2' || Class == 'search-box' || Id == 'inputText' || Id == 'logo') {
+      slideout.close();
+    }
+  });
+</script>
+<div id="cc-myssl-id" style="position: fixed;right: 0;bottom: 0;width: 65px;height: 65px;z-index: 99;">
+    <a href="https://myssl.com/www.iloli.love?from=mysslid"><img src="https://static.myssl.com/res/images/myssl-id.png" alt="" style="width:100%;height:100%"></a>
+</div>
+</body>
+<script type="text/javascript">
+  document.write('<script src="js/main.js?v=' + now + '"><\/script\>');
+</script>
+</html>
